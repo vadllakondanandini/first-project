@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Campus Quest helps first-year students find important campus places and plan simple routes.">
+  <title>Campus Quest | Campus guide</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Campus Quest home"><span class="brand-mark">CQ</span><span>Campus <strong>Quest</strong><small>YOUR FIRST-YEAR CAMPUS GUIDE</small></span></a>
+    <nav aria-label="Main navigation"><a href="#explore">Explore</a><a href="#directions">Directions</a><a href="#report">Report an issue</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">NEW HERE? START HERE.</p>
+        <h1>Your campus.<br><span>Your next step.</span></h1>
+        <p class="hero-intro">Find classrooms, labs, offices, food spots and student services without the first-week confusion.</p>
+        <a class="button button-light" href="#explore">Explore campus <span aria-hidden="true">↘</span></a>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="map-label label-one">MAIN BLOCK</div><div class="map-label label-two">LIBRARY</div><div class="map-label label-three">CAFETERIA</div>
+        <svg viewBox="0 0 440 300" role="img">
+          <path class="road" d="M-10 220 C70 180 90 250 160 190 S260 140 300 180 S390 230 460 160"/>
+          <path class="road road-two" d="M130 -10 C170 50 130 95 210 130 S300 230 260 310"/>
+          <rect class="building b1" x="42" y="35" width="105" height="65" rx="10"/><rect class="building b2" x="250" y="35" width="115" height="75" rx="10"/>
+          <rect class="building b3" x="62" y="205" width="88" height="55" rx="10"/><rect class="building b4" x="290" y="205" width="90" height="55" rx="10"/>
+          <path class="green" d="M175 20h45v45h-45zM175 225h55v45h-55zM345 130h55v35h-55z"/>
+          <circle class="pin" cx="200" cy="130" r="18"/><circle class="pin-core" cx="200" cy="130" r="6"/>
+        </svg>
+        <div class="floating-note"><span class="pulse"></span> A little less lost</div>
+      </div>
+    </section>
+
+    <section class="stats-row" aria-label="Campus guide summary">
+      <div><strong id="place-count">—</strong><span>places to explore</span></div>
+      <div><strong>3 steps</strong><span>search · choose · go</span></div>
+      <div><strong>Made for you</strong><span>first-year students</span></div>
+    </section>
+
+    <section class="section" id="explore">
+      <div class="section-heading"><div><p class="eyebrow">THE CAMPUS DIRECTORY</p><h2>Where do you need to go?</h2></div><p class="section-note">Search by place name or filter by what you need.</p></div>
+      <div class="search-tools">
+        <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Try “library” or “admissions”" autocomplete="off" aria-label="Search campus places"></label>
+        <label class="select-wrap"><span class="sr-only">Filter by category</span><select id="category"><option value="">All categories</option></select></label>
+      </div>
+      <div id="status" class="status" role="status">Loading campus places…</div>
+      <div id="places" class="places-grid"></div>
+    </section>
+
+    <section class="directions-section" id="directions">
+      <div class="directions-copy"><p class="eyebrow">GET THERE WITH CONFIDENCE</p><h2>One place to another.</h2><p>Choose a starting point and destination to see the route notes available in this campus guide.</p>
+        <div class="tip"><span>✦</span><p><strong>First-week tip</strong><br>Ask campus staff if a room number or building entrance has changed.</p></div>
+      </div>
+      <form id="route-form" class="route-card">
+        <label>Starting point<select id="route-from" required><option value="">Choose a place</option></select></label>
+        <button type="button" class="swap-button" id="swap-route" aria-label="Swap starting point and destination">↕</button>
+        <label>Destination<select id="route-to" required><option value="">Choose a place</option></select></label>
+        <button class="button button-dark" type="submit">Find directions <span aria-hidden="true">→</span></button>
+        <div id="route-result" class="route-result" role="status" aria-live="polite">Your route instructions will appear here.</div>
+      </form>
+    </section>
+
+    <section class="section report-section" id="report">
+      <div class="section-heading"><div><p class="eyebrow">HELP KEEP IT USEFUL</p><h2>Something not right?</h2></div><p class="section-note">Report a closed room, outdated direction or missing place.</p></div>
+      <form id="issue-form" class="issue-form">
+        <label>Your name (optional)<input id="reporter-name" maxlength="80" placeholder="What should we call you?"></label>
+        <label>What is the issue?<select id="issue-type" required><option value="wrong_information">Wrong information</option><option value="place_closed">Place is closed</option><option value="missing_place">Missing place</option><option value="accessibility">Accessibility concern</option><option value="other">Other</option></select></label>
+        <label class="full-field">Details<textarea id="issue-details" rows="3" minlength="10" maxlength="1000" required placeholder="Tell us what needs to be corrected (at least 10 characters)."></textarea></label>
+        <button class="button button-dark" type="submit">Send report <span aria-hidden="true">→</span></button>
+        <p id="issue-status" class="form-status" role="status"></p>
+      </form>
+    </section>
+  </main>
+  <footer><a class="brand footer-brand" href="/"><span class="brand-mark">CQ</span><span>Campus <strong>Quest</strong></span></a><p>Built to make the first days on campus feel easier.</p><span>Campus details should be verified with your college.</span></footer>
+</body>
+</html>
